@@ -1,0 +1,55 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet" href="/style.css")
+    title Components | Deer
+    style.
+      body {
+        background: #fafafa;
+        margin: 0;
+        font-size: 15px;
+        padding: 0 32px;
+      }
+      .deer-component {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+        border-radius: 3px;
+        overflow: hidden;
+        background: #ffffff;
+        margin-bottom: 32px;
+      }
+      .deer-component__preview {
+        padding: 16px;
+      }
+      .deer-component__code {
+        padding: 16px;
+        border: none;
+        margin: 0;
+        resize: none;
+        width: 100%;
+        height: 100px;
+        vertical-align: bottom;
+        border-top: 1px solid #ddd;
+        font-size: 12px;
+        outline: none;
+        color: #999;
+        box-sizing: border-box;
+      }
+      .deer-component-hdg {
+        font-size: 20px;
+        margin: 32px 0 16px;
+      }
+  body
+    block content
+    script.
+      Array.from(document.querySelectorAll('.js-deer-component'), elem => {
+        var tag = elem.innerHTML.replace(/^\s+/gm, '').replace(/\n$/g, '');
+        elem.innerHTML = `
+          <div class="deer-component">
+          <div class="deer-component__preview">${tag}</div>
+          <textarea class="deer-component__code js-deer-component-code" onClick="this.select()">${tag}</textarea>
+          </div>
+        `;
+      });

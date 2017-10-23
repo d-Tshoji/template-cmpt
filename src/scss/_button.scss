@@ -1,0 +1,32 @@
+.btn {
+  padding: 0 16px;
+  border-radius: 2px;
+  line-height: 52px;
+  background-color: #7CC661;
+  vertical-align: center;
+  display: inline-block;
+  color: #fff;
+  margin-right: 16px;
+  margin-top: 20px;
+  &--sub {
+    background: none;
+    color: #7CC661;
+    border: 1px solid #7CC661;
+  }
+  &__icon {
+    margin-right: 8px;
+    height: 21px;
+    vertical-align: -5px;
+  }
+  &--concept {
+    background: #fff;
+    color: #7aa56a;
+    border-color: #7aa56a;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  &s {
+    margin-top: -20px;
+  }
+}

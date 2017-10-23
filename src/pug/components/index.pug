@@ -1,0 +1,148 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet" href="/style.css")
+    title Components | Deer
+    style.
+      body {
+        background: #fafafa;
+        margin: 0;
+        height: 100%;
+      }
+      html {
+        font-size: 15px;
+        height: 100%;
+      }
+      .deer-component {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+        border-radius: 3px;
+        overflow: hidden;
+        background: #ffffff;
+        margin-bottom: 32px;
+      }
+      .deer-component-wrap {
+        display: flex;
+        height: 100%;
+      }
+      .deer-component-nav {
+        width: 200px;
+        background: #333;
+        padding: 16px 0;
+        box-shadow: 3px 0 6px rgba(0,0,0, .16);
+      }
+      .deer-component-nav__item {
+        color: #ffffff;
+        padding: 16px;
+        text-align: right;
+        display: block;
+        text-decoration: none;
+        font-size: 13px;
+      }
+      .deer-component-nav__item:hover {
+        background: #fafafa;
+        color: #333333;
+      }
+      .deer-component-main {
+        flex: 1;
+        height: 100%;
+      }
+      .deer-component-hdg {
+        font-size: 20px;
+        margin: 32px 0 16px;
+      }
+      .deer-component-frame {
+        width: 100%;
+        height: 100%;
+        vertical-align: bottom;
+        display: block;
+        margin: 0 auto;
+      }
+      .deer-devices {
+        display: flex;
+        margin-bottom: 16px;
+        justify-content: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #ddd;
+      }
+      .deer-devices__item {
+        margin-right: 16px;
+        background: none;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        color: #fff;
+        margin: 0 16px 0 0 ;
+        cursor: pointer;
+        padding: 5px 10px;
+        outline: none;
+      }
+      .deer-devices__item.active {
+        background: #ddd;
+        color: #333;
+      }
+  body
+    .deer-component-wrap
+      .deer-component-nav
+        .deer-devices.js-deer-devices
+          button.deer-devices__item.active(data-device="pc") PC
+          button.deer-devices__item(data-device="sp") SP
+        .js-deer-component-nav
+          a.deer-component-nav__item(href="./heading.html") Heading
+          a.deer-component-nav__item(href="./button.html") Button
+          a.deer-component-nav__item(href="./table.html") Table
+          a.deer-component-nav__item(href="./list.html") List
+          a.deer-component-nav__item(href="./card.html") Card
+          a.deer-component-nav__item(href="./sentence.html") Sentence
+          a.deer-component-nav__item(href="./section.html") Section
+          a.deer-component-nav__item(href="./unique.html") Unique
+      .deer-component-main
+        iframe(src="./heading.html").deer-component-frame#js-deer-component-frame
+    script.
+
+      const $frame = document.getElementById('js-deer-component-frame');
+
+      let changeDevice = device => {
+        switch(device) {
+          case 'pc':
+            $frame.style.width = '100%';
+            localStorage.device = 'pc';
+            break;
+          case 'sp':
+            $frame.style.width = '400px';
+            localStorage.device = 'sp';
+            break;
+        }
+
+        document.querySelectorAll('.js-deer-devices button').forEach(elm => {
+          elm.classList.remove('active');
+        });
+        document.querySelector(`[data-device=${device}]`).classList.add('active');
+
+        localStorage.device = device;
+      }
+
+      if (localStorage.device) {
+        changeDevice(localStorage.device);
+      }
+
+      if (localStorage.component) {
+        $frame.src = localStorage.component;
+      }
+
+      document.querySelectorAll('.js-deer-component-nav a').forEach(elm => {
+        elm.addEventListener('click', event => {
+          event.preventDefault();
+          $frame.src = event.target.getAttribute('href');
+          localStorage.component = event.target.getAttribute('href');
+        });
+      });
+
+      document.querySelectorAll('.js-deer-devices button').forEach(elm => {
+        elm.addEventListener('click', event => {
+          event.preventDefault();
+          changeDevice(event.target.dataset.device);
+        });
+      });
+      

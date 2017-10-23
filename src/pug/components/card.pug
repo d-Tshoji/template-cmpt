@@ -1,0 +1,37 @@
+extends ./_base
+block content
+
+  h2#card.deer-component-hdg card
+
+  .js-deer-component
+    .card
+      .card__body
+        .row.middle-xs.center-sm
+          .col-sm-10.col-xs-12
+            .card__content.card__content--center
+              p センター寄せカード
+
+  .js-deer-component
+    .card
+      .card__body
+        .row.middle-xs.center-sm
+          .col-sm-4.col-xs-12.last-sm
+            figure.card__pic
+              img(src="/img/clip-partner.svg", alt="")
+          .col-sm-6.col-xs-12
+            .card__content
+              h2.hdg 右画像クリップアートカード
+              p.sentence 導入パッケージの販売、設備のリースなど、さまざまな形で提携いただける販売パートナーを募集しています。まずはお気軽にご相談ください。
+              a(href="").btn 相談する
+
+  .js-deer-component
+    .card
+      .card__body
+        .row
+          .card__pic-wrap.last-sm
+            figure.card__pic.card__pic--fill(style="background-image: url(/img/hero.png)", alt="")
+          .col-sm-6.col-sm-offset-1.col-xs-12
+            .card__content
+              h2.hdg 右画像塗りつぶしカード
+              p.sentence 背景画像はスタイル直書きで指定してください
+              a(href="").btn 相談する

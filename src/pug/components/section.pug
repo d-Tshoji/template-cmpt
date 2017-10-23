@@ -1,0 +1,21 @@
+extends ./_base
+block content
+
+  h2#section.deer-component-hdg Section
+
+  .js-deer-component
+    .section
+      .card
+        .card__body
+          .card__content
+            p カード
+    .section-sinks(style="background: #ddd; height: 400px")
+      .sentence(style="padding: 120px 32px;")
+        p このセクションは前後にめり込みます
+        p めり込むコンテンツの背景や高さは直書きで指定してください
+        p 前後の要素群を .section でwrapしてください
+    .section
+      .card
+        .card__body
+          .card__content
+            p カード
